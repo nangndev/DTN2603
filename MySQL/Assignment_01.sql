@@ -2,81 +2,81 @@
 -- tạo db
 CREATE DATABASE dtn2603_testing_system ;
 -- sử dụng db
-use dtn2603_testing_system; 
+USE dtn2603_testing_system; 
 -- tạo bảng
 CREATE TABLE department( 
-	department_id int primary key auto_increment,
+	department_id INT PRIMARY KEY AUTO_INCREMENT,
     department_name VARCHAR(100)
 );
 CREATE TABLE `position`(
-	position_id int primary key auto_increment,
-    position_name enum('DEV','TEST','SCRUM_MASTER','PM')
+	position_id INT PRIMARY KEY AUTO_INCREMENT,
+    position_name ENUM('DEV','TEST','SCRUM_MASTER','PM')
 );
-create table `account`(
-	account_id int primary key auto_increment,
-    email varchar(100) NOT NULL unique,
-    username varchar(100) NOT NULL unique,
-    full_name varchar(100), 
-    department_id int,
-    position_id int,
-    create_date datetime,
-    foreign key (department_id) references department(department_id),
-    foreign key (position_id) references `position`(position_id)
+CREATE TABLE `account`(
+	account_id INT PRIMARY KEY AUTO_INCREMENT,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    username VARCHAR(100) NOT NULL UNIQUE,
+    full_name VARCHAR(100), 
+    department_id INT,
+    position_id INT,
+    create_date DATETIME,
+    FOREIGN KEY (department_id) REFERENCES department(department_id),
+    FOREIGN KEY (position_id) REFERENCES `position`(position_id)
 );
-create table `group`(
-	group_id int primary key auto_increment,
-    group_name varchar(100),
-    creator_id int ,
-    create_date datetime
+CREATE TABLE `group`(
+	group_id INT PRIMARY KEY AUTO_INCREMENT,
+    group_name VARCHAR(100),
+    creator_id INT ,
+    create_date DATETIME
 );
-create table group_account(
-	group_id int ,
-    account_id int ,
-    join_date datetime,
+CREATE TABLE group_account(
+	group_id INT ,
+    account_id INT ,
+    join_date DATETIME,
     PRIMARY KEY (group_id, account_id),
-    foreign key (group_id) references `group`(group_id),
-    FOREIGN KEY (account_id) REFERENCES account(account_id)
+    FOREIGN KEY (group_id) REFERENCES `group`(group_id),
+    FOREIGN KEY (account_id) REFERENCES `account`(account_id)
 );
-create table type_question(
-	type_id int primary key auto_increment,
-    type_name enum('ESSAY','MULTIPLE_CHOICE')
+CREATE TABLE type_question(
+	type_id INT PRIMARY KEY AUTO_INCREMENT,
+    type_name ENUM('ESSAY','MULTIPLE_CHOICE')
 );
-create table category_question(
-	category_id int primary key auto_increment,
-    category_name varchar(100)
+CREATE TABLE category_question(
+	category_id INT PRIMARY KEY AUTO_INCREMENT,
+    category_name VARCHAR(100)
 );
-create table question(
-	question_id int primary key auto_increment,
-    `content` text,
-    category_id int,
-    type_id int,
-    creator_id int,
-    create_date datetime,
-    foreign key (category_id) references category_question(category_id),
-    foreign key (type_id) references type_question(type_id)
+CREATE TABLE question(
+	question_id INT PRIMARY KEY AUTO_INCREMENT,
+    `content` TEXT,
+    category_id INT,
+    type_id INT,
+    creator_id INT,
+    create_date DATETIME,
+    FOREIGN KEY (category_id) REFERENCES category_question(category_id),
+    FOREIGN KEY (type_id) REFERENCES type_question(type_id)
 );
-create table answer(
-	answer_id int primary key auto_increment,
-    content text,
-    question_id int,
-    is_correct enum('TRUE','FALSE'),
-    foreign key (question_id) references question(question_id)
+CREATE TABLE answer(
+	answer_id INT PRIMARY KEY AUTO_INCREMENT,
+    content TEXT,
+    question_id INT,
+    is_correct ENUM('TRUE','FALSE'),
+    FOREIGN KEY (question_id) REFERENCES question(question_id)
 );
-create table exam(
-	exam_id int primary key auto_increment,
-    `code` varchar(20),
-    title varchar(100),
-    category_id int,
-    duration int,
-    creator_id int ,
-    create_date datetime,
-	foreign key (category_id) references category_question(category_id)
+CREATE TABLE exam(
+	exam_id INT PRIMARY KEY AUTO_INCREMENT,
+    `code` VARCHAR(20),
+    title VARCHAR(100),
+    category_id INT,
+    duration INT,
+    creator_id INT ,
+    create_date DATETIME,
+	FOREIGN KEY (category_id) REFERENCES category_question(category_id)
 );
-create table Exam_question(
-	exam_id int,
-    question_id int,
+CREATE TABLE Exam_question(
+	exam_id INT,
+    question_id INT,
     PRIMARY KEY(exam_id, question_id),
-    foreign key (question_id) references question(question_id),
+    FOREIGN KEY (question_id) REFERENCES question(question_id),
     FOREIGN KEY(exam_id) REFERENCES exam(exam_id)
 );
 
