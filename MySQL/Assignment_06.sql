@@ -13,11 +13,7 @@ CREATE PROCEDURE sp_q1_get_account_by_department(
 BEGIN
     SELECT
         a.account_id,
-        a.email,
-        a.user_name,
-        a.full_name,
-        d.department_name,
-        a.create_date
+        a.full_name
     FROM `account` a
     JOIN department d
         ON a.department_id = d.department_id
@@ -39,7 +35,6 @@ DELIMITER $$
 CREATE PROCEDURE sp_q2_count_account_each_group()
 BEGIN
     SELECT
-        g.group_id,
         g.group_name,
         COUNT(ga.account_id) AS so_luong_account
     FROM `group` g
@@ -64,7 +59,6 @@ DELIMITER $$
 CREATE PROCEDURE sp_q3_count_question_current_month()
 BEGIN
     SELECT
-        tq.type_id,
         tq.type_name,
         COUNT(q.question_id) AS so_luong_question
     FROM type_question tq
