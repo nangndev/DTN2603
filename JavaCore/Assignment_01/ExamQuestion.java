@@ -1,6 +1,6 @@
 public class ExamQuestion {
 
-    public Integer examId;
-    public Integer questionId;
+    public Exam exam;
+    public Question question;
 
 }

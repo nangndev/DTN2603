@@ -6,8 +6,10 @@ public class Account {
     public String email;
     public String userName;
     public String fullName;
-    public Integer departmentId;
-    public Integer positionId;
+    // Foreign key
+    public Department department;
+    public Position position;
+
     public LocalDateTime createDate;
 
 }

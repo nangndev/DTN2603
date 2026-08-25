@@ -5,9 +5,9 @@ public class Exam {
     public Integer examId;
     public String code;
     public String title;
-    public Integer categoryId;
+    public CatagoryQuestion category;
     public Integer duration;
-    public Integer creatorId;
+    public Account creator;
     public LocalDateTime createDate;
 
 }

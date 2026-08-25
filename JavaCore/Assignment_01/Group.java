@@ -4,7 +4,8 @@ public class Group {
 
     public Integer groupId;
     public String groupName;
-    public Integer creatorId;
+    // Foreign key
+    public Account creator;
     public LocalDateTime createDate;
 
 }

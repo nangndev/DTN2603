@@ -4,9 +4,9 @@ public class Question {
 
     public Integer questionId;
     public String content;
-    public Integer categoryId;
-    public Integer typeId;
-    public Integer creatorId;
+    public CategoryQuestion category;
+    public TypeQuestion typeQuestion;
+    public Account creator;
     public LocalDateTime createDate;
 
 }

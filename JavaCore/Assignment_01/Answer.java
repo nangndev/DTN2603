@@ -2,7 +2,8 @@ public class Answer {
 
     public Integer answerId;
     public String content;
-    public Integer questionId;
+    // foreign key
+    public Question question;
     public IsCorrect isCorrect;
 
     public enum IsCorrect {
