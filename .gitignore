@@ -1,0 +1,16 @@
+# Thư mục chứa thư viện phụ thuộc
+#node_modules/
+
+# Thư mục build sản phẩm
+#dist/
+#build/
+
+# File cấu hình môi trường bảo mật
+#.env
+#.env.local
+
+# File log hệ thống
+#*.log
+#npm-debug.log*
+
+ThucNghiem/
